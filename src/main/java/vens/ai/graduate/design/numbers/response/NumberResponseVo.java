@@ -4,10 +4,9 @@ import java.util.List;
 import vens.ai.graduate.design.numbers.entity.Number;
 /**
  * @author vens
- * @date 2018-05-04 19:26
+ * @date 2018-05-19 23:44
  **/
-public class NumResponse {
-    List<String> faildNumbers;
+public class NumberResponseVo {
     List<Number> numbers;
     String code;
 
@@ -25,13 +24,5 @@ public class NumResponse {
 
     public void setNumbers(List<Number> numbers) {
         this.numbers = numbers;
-    }
-
-    public List<String> getFaildNumbers() {
-        return faildNumbers;
-    }
-
-    public void setFaildNumbers(List<String> faildNumbers) {
-        this.faildNumbers = faildNumbers;
     }
 }

@@ -8,7 +8,7 @@ import org.apache.cxf.jaxrs.swagger.Swagger2Feature;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import vens.ai.graduate.design.numbers.controller.NumbersControllerImpl;
+import vens.ai.graduate.design.numbers.controller.controllerImpl.NumbersControllerImpl;
 
 import java.util.Arrays;
 
@@ -20,7 +20,8 @@ import java.util.Arrays;
 public class CxfConfig {
     @Autowired
     private Bus bus;
-
+    @Autowired
+    NumbersControllerImpl numbersController;
     @Bean
     public JacksonJsonProvider jsonProvider() {
         return new JacksonJsonProvider();
@@ -31,7 +32,7 @@ public class CxfConfig {
         JAXRSServerFactoryBean endpoint = new JAXRSServerFactoryBean();
         endpoint.setBus(bus);
         endpoint.setAddress("/");
-        endpoint.setServiceBeans(Arrays.<Object>asList(new NumbersControllerImpl()));
+        endpoint.setServiceBeans(Arrays.<Object>asList(numbersController));
         endpoint.setProvider(new JacksonJsonProvider());
         endpoint.setFeatures(Arrays.asList(new Swagger2Feature()));
         return endpoint.create();

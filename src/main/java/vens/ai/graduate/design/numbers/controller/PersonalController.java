@@ -1,22 +1,21 @@
 package vens.ai.graduate.design.numbers.controller;
 
-import vens.ai.graduate.design.numbers.entity.Number;
+import org.springframework.web.bind.annotation.RequestParam;
 import vens.ai.graduate.design.numbers.request.DeleteRequest;
 import vens.ai.graduate.design.numbers.request.NumRequest;
-import vens.ai.graduate.design.numbers.request.NumberRequestVo;
+import vens.ai.graduate.design.numbers.request.PersonalRequest;
 import vens.ai.graduate.design.numbers.response.NumResponse;
-import vens.ai.graduate.design.numbers.response.NumberResponseVo;
+import vens.ai.graduate.design.numbers.response.PersonalResponse;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
-import java.util.List;
 
 /**
  * @author
- * @date 2018-05-04 19:22
+ * @date 2018-05-13 0:06
  **/
-@Path("/endpoint")
-public interface NumbersController {
+@Path("/personal")
+public interface PersonalController {
     /**
      * 增加成员
      * @param request
@@ -26,7 +25,7 @@ public interface NumbersController {
     @POST
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    NumResponse addNumber(NumberRequestVo request);
+    PersonalResponse addPersonal(PersonalRequest request);
 
     /**
      * 删除一个number
@@ -37,7 +36,7 @@ public interface NumbersController {
     @POST
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    NumResponse deleteNumber(DeleteRequest request);
+    PersonalResponse deletePersonal(DeleteRequest request);
 
     /**
      * 修改number
@@ -48,23 +47,17 @@ public interface NumbersController {
     @POST
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    NumResponse updateNumber(NumRequest request);
+    PersonalResponse updatePersonal(PersonalRequest request);
 
 
     /**
      * 查询
-     * @param flag 用来确定查询什么类型的成员
+     * @param
      * @return
      */
-    @Path("/get")
+    @Path("/get/{stuId}")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    NumberResponseVo getNumber();
-
-    @Path("/test")
-    @GET
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes(MediaType.APPLICATION_JSON)
-    List<Number> getNumbers();
+    PersonalResponse getPersonal(@RequestParam("stuId") String stuId);
 }

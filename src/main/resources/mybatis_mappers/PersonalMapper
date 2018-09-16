@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="vens.ai.graduate.design.numbers.mapper.PersonalMapper">
+    <resultMap id="PersonalMap" type="vens.ai.graduate.design.numbers.entity.Personal">
+        <id column="id" property="id"/>
+        <result column="user_name" property="userName"/>
+        <result column="authority" property="authority"/>
+        <result column="motto" property="motto"/>
+        <result column="student_id" property="studentId"/>
+        <result column="head_portrait" property="headPortrait"/>
+    </resultMap>
+
+    <insert id="add">
+        insert into personal(user_name,authority,motto,student_id,head_portrait)values(
+        #{userName,jdbcType=VARCHAR},
+        #{authority,jdbcType=INTEGER},
+        #{motto,jdbcType=VARCHAR},
+        #{studentId,jdbcType=VARCHAR},
+        #{headPortrait,jdbcType=BLOB})
+    </insert>
+
+    <update id="update" >
+        update personal set
+        user_name=#{userName,jdbcType=VARCHAR},
+        authority=#{authority,jdbcType=INTEGER},
+        motto=#{motto,jdbcType=VARCHAR},
+        student_id=#{motto,jdbcType=VARCHAR},
+        head_portrait=#{headPortrait,jdbcType=BLOB},
+        where person_id=#{personId,jdbcType=INTEGER}
+    </update>
+
+    <select id="findByStuId" resultMap="PersonalMap">
+        select * from where student_id=#{}
+    </select>
+
+    <delete id="deleteByStuId">
+        delete from personal where student_id=#{}
+    </delete>
+</mapper>
