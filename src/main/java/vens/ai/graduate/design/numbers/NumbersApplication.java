@@ -3,12 +3,14 @@ package vens.ai.graduate.design.numbers;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
 
 /**
  * @author vens
  * @date 2018-05-04 19:34
  **/
+@EnableDiscoveryClient
 @SpringBootApplication
 @MapperScan(basePackages = "vens.ai.graduate.design.numbers.mapper")
 public class NumbersApplication {

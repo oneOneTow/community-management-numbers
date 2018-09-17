@@ -1,5 +1,5 @@
 server:
-  port: 8082
+  port: 8083
 cxf:
   path: /numbers
 
@@ -10,6 +10,14 @@ spring:
         username: root
         password: 207416
         driver-class-name: com.mysql.jdbc.Driver
+  application:
+    name: numbers
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    prefer-ip-address: true
 mybatis:
     type-aliases-package: vens.ai.graduate.design.authorization.entity
     mapper-locations: classpath:mybatis_mappers/*.xml
